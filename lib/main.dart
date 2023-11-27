@@ -29,16 +29,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class DiceePage extends StatelessWidget {
-  DiceePage({super.key});
+class DiceePage extends StatefulWidget {
+  const DiceePage({super.key});
+
+  @override
+  State<DiceePage> createState() => _DiceePageState();
+}
+
+class _DiceePageState extends State<DiceePage> {
   int leftDiceNumber = 1;
   int rightDiceNumber = 3;
 
   void throwDice() {
-    leftDiceNumber = Random().nextInt(6) + 1;
-    rightDiceNumber = Random().nextInt(6) + 1;
-    print(leftDiceNumber);
-    print(rightDiceNumber);
+    setState(() {
+      leftDiceNumber = Random().nextInt(6) + 1;
+      rightDiceNumber = Random().nextInt(6) + 1;
+    });
   }
 
   @override
@@ -63,4 +69,6 @@ class DiceePage extends StatelessWidget {
       ),
     );
   }
+
+  // ···
 }
